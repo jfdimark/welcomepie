@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Welcomepie::Application.config.secret_token = 'a7ca3443f603761c84dd80040d7da706bc9c4854c16ac33c06cfe788a570c8167ddafd2e88777feee7ac61f1ef477294389ab8f98de003ac765f1edf6822b83b'
+Welcomepie::Application.config.secret_token = '5d152d310c87976071f65e085b01c2564515e25a1f54ef0f141e463974f80fc59bacb6f990fea445d4b508de0107ba4f5b8571fbf900a1dbe95c3183b34f5123'
