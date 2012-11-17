@@ -1,0 +1,4 @@
+RECIPES
+["controllers", "core", "email", "extras", "frontend", "gems", "git", "init", "models", "prelaunch", "railsapps", "readme", "routes", "saas", "setup", "testing", "views"]
+PREFERENCES
+{:unit_test=>"rspec", :devise_modules=>"default", :database=>"sqlite", :templates=>"erb", :integration=>"cucumber", :authorization=>"cancan", :fixtures=>"factory_girl", :starter_app=>"admin_app", :frontend=>"bootstrap", :form_builder=>"simple_form", :bootstrap=>"sass", :git=>true, :dev_webserver=>"webrick", :email=>"gmail", :railsapps=>"rails-stripe-membership-saas", :quiet_assets=>true, :authentication=>"devise"}
