@@ -9,6 +9,23 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      sign_in @user
+      redirect_to users_path, :notice => "Welcome to WelcomePie!"
+    else
+      redirect_to new_users_path, :alert => "Please try signing up again"
+    end
+  end
+
+  def edit
+  end 
   
   def update
     authorize! :update, @user, :message => 'Not authorized as an administrator.'

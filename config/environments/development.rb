@@ -32,6 +32,7 @@ Welcomepie::Application.configure do
   }
 
 
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -51,4 +52,5 @@ Welcomepie::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
 end

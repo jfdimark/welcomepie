@@ -1,3 +1,13 @@
 <h3>User</h3>
 <p>User: <%= @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
+<p>Occupation: <%= @user.occupation %></p>
+<p>Gender: <%= @user.gender %></p>
+<p>Moving From: <%= @user.moving_from %></p>
+<p>Moving To: <%= @user.moving_to %></p>
+<p>Single, Couple or Family: <%= @user.family_type %></p>
+<p>Age Range: <%= @user.age_bracket %></p>
+<p>Interests: <%= @user.interests %></p>
+<p>About Me: <%= @user.about_me %></p>
+<p>Username: <%= @user.username %></p>
+<p>Photo:<br /> <%= image_tag @user.avatar.url(:medium) %></p>
