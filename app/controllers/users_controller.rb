@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
      
-    #authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
     
     @users = User.all
     
@@ -34,9 +34,9 @@ class UsersController < ApplicationController
     authorize! :update, @user, :message => 'Not authorized as an administrator.'
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user], :as => :admin)
-      redirect_to @user, :notice => "User updated."
+      redirect_to user, :notice => "User updated."
     else
-      redirect_to @user, :alert => "Unable to update user."
+      redirect_to user, :alert => "Unable to update user."
     end
   end
     
@@ -58,4 +58,5 @@ class UsersController < ApplicationController
       format.json { render json: @tags }
     end
   end
+
 end
