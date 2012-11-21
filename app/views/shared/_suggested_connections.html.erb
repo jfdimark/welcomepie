@@ -1,0 +1,14 @@
+	<div class="span5">
+		<div class="MemberDisplay">
+			<ul>
+		  <% @user.friendships.each do |friendship| %>
+		  <li>
+		    	<%= friendship.friend.name %> 
+		    (<%= link_to "remove", friendship, :method => :delete %>)<br />
+ 		    	<%= image_tag friendship.friend.avatar(:thumb) %>
+		  </li>
+		  <% end %> 
+		</ul>
+		</div>
+	</div>
+
