@@ -2,8 +2,11 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+     
+    #authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    
     @users = User.all
+    
   end
 
   def show
@@ -31,9 +34,9 @@ class UsersController < ApplicationController
     authorize! :update, @user, :message => 'Not authorized as an administrator.'
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user], :as => :admin)
-      redirect_to users_path, :notice => "User updated."
+      redirect_to @user, :notice => "User updated."
     else
-      redirect_to users_path, :alert => "Unable to update user."
+      redirect_to @user, :alert => "Unable to update user."
     end
   end
     
@@ -45,6 +48,14 @@ class UsersController < ApplicationController
       redirect_to users_path, :notice => "User deleted."
     else
       redirect_to users_path, :notice => "Can't delete yourself."
+    end
+  end
+
+  def find_tags
+    @tags = Video.tag_tokens(params[:q])
+    respond_to do |format|
+      format.html
+      format.json { render json: @tags }
     end
   end
 end

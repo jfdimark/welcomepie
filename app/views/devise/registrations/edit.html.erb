@@ -1,27 +1,42 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row-fluid">
+	<div class="span5 offset1">
+		<div class="UserProfile">
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
-  	<%= f.error_notification %>
-	  <%= f.input :name, :autofocus => true %>
-	  <%= f.input :email, :required => true %>
-	  <%= f.input :occupation, :placeholder => "e.g. Student, Lawyer, Housewife etc." %>
-	  <%= f.input :gender, :collection => ["Male", "Female"] %>
-	  <%= f.input :moving_from, :placeholder => "London, UK" %>
-	  <%= f.input :moving_to, :placeholder => "New York, USA" %>
-	  <%= f.input :family_type, :label => "What is your situation?", :collection => ["A family with children", "A couple", "Single"] %>
-	  <%= f.input :age_bracket, :label => "Age range", :collection => ["18-21", "22-29", "30-39", "40-49", "50-59", "60-69", "70+"] %>
-	  <%= f.input :interests, :collection => ["Meals out", "Cinema", "Live music", "Clubbing", "Museums", "Art galleries", "Sports", "Kid friendly activities"] %>
-	  <%= f.input :about_me, :label => "Tell us a little more about yourself and why you’d like to find a Welcome Buddy!" %>
-	  <%= f.input :username, :label => "Create a user name?" %>
-		<%= f.label :photo, :label => "Upload a profile photo" %>
-	  <%= f.file_field :avatar, :label => "false"  %>
-	  <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-	  <%= f.input :password_confirmation, :required => false %>
-	  <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
-	  <%= f.button :submit, 'Update', :class => 'btn-primary' %>
-	<% end %>
+			<h3>Edit your profile</h3>
 
-<h3>Cancel my account</h3>
+			<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+			  	<%= f.error_notification %>
+				  <%= f.input :name, :autofocus => true %>
+				  <%= f.input :email, :required => true %>
+				  <%= f.input :occupation_list, :placeholder => "e.g. Student, Lawyer, Housewife etc." %>
+				  <%= f.input :gender_list, :collection => ["Male", "Female"] %>
+				  <%= f.input :moving_from_list, :placeholder => "London, UK" %>
+				  <%= f.input :moving_to_list, :placeholder => "New York, USA" %>
+				  <%= f.input :family_type_list, :label => "What is your situation?", :collection => ["A family with children", "A couple", "Single"] %>
+				  <%= f.input :age_bracket_list, :label => "Age range", :collection => ["18-21", "22-29", "30-39", "40-49", "50-59", "60-69", "70+"] %>
+				  <%= f.input :interest_list, :placeholder => "e.g. Meals out, Cinema, Live music, Clubbing, Museums, Art galleries, Sports, Kid friendly activities" %>
+				  <%= f.input :about_me, :label => "Tell us a little more about yourself and why you’d like to find a Welcome Buddy!" %>
+				  <%= f.input :username, :label => "Create a user name?" %>
+					<%= f.label :photo, :label => "Upload a profile photo" %>
+				  <%= f.file_field :avatar, :label => "false"  %>
+				  <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+				  <%= f.input :password_confirmation, :required => false %>
+				  <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+				  <%= f.button :submit, 'Update', :class => 'btn-primary' %>
+				<% end %>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-<%= link_to "Back", :back %>
+			<h3>Cancel my account</h3>
+
+			<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+			<%= link_to "Back", :back %>
+
+		</div>
+	</div>
+
+
+	<div class="span5">
+		<div class="MemberDisplay">
+			<p> Some test text for now </p>
+		</div>
+	</div>
+</div>

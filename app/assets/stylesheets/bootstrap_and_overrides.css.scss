@@ -1,3 +1,32 @@
 @import "bootstrap";
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
+
+$green: #3CC221;
+$palegreen: #60E06F;
+
+
+
+
+	.UserProfile {
+	  padding: 20px;
+	  margin-bottom: 30px;
+	  background-color: $green;
+	  background-size: 100%;
+	  opacity: .95;
+	    -webkit-border-radius: 6px;
+	     -moz-border-radius: 6px;
+	          border-radius: 6px;
+
+	}
+
+	.MemberDisplay {
+	  padding: 20px;
+	  margin-bottom: 30px;
+	  background-color: $palegreen;
+	  background-size: 100%;
+	  opacity: .95;
+	    -webkit-border-radius: 6px;
+	     -moz-border-radius: 6px;
+	          border-radius: 6px;
+	}

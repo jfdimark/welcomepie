@@ -1,13 +1,31 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
-<p>Occupation: <%= @user.occupation %></p>
-<p>Gender: <%= @user.gender %></p>
-<p>Moving From: <%= @user.moving_from %></p>
-<p>Moving To: <%= @user.moving_to %></p>
-<p>Single, Couple or Family: <%= @user.family_type %></p>
-<p>Age Range: <%= @user.age_bracket %></p>
-<p>Interests: <%= @user.interests %></p>
-<p>About Me: <%= @user.about_me %></p>
-<p>Username: <%= @user.username %></p>
-<p>Photo:<br /> <%= image_tag @user.avatar.url(:medium) %></p>
+<div class="row-fluid">
+	<div class="span5 offset1">
+		<div class="UserProfile">
+
+			<h3>Your profile</h3>
+			<p>User: <b><%= @user.name %></p></b>
+			<p>Email: <b><%= @user.email if @user.email %></p></b>
+			<p>Occupation: <b><%= @user.occupation_list %></p></b>
+			<p>Gender: <b><%= @user.gender_list %></p></b>
+			<p>Moving From: <b><%= @user.moving_from_list %></p></b>
+			<p>Moving To: <b><%= @user.moving_to_list %></p></b>
+			<p>Single, Couple or Family: <b><%= @user.family_type_list %></p></b>
+			<p>Age Range: <b><%= @user.age_bracket_list %></p></b>
+			<p>Interests: <b><%= @user.interest_list %></p></b>
+			<p>About Me: <b><%= @user.about_me %></p></b>
+			<% if @user.username.present? %>
+			<p>Username: <b><%= @user.username %></p></b>
+			<% else %>
+			<% end %>
+			<p>Photo:<br /> <%= image_tag @user.avatar.url(:medium) %></p>
+
+		</div>
+	</div>
+
+
+	<div class="span5">
+		<div class="MemberDisplay">
+			<p> Some test text for now </p>
+		</div>
+	</div>
+</div>
