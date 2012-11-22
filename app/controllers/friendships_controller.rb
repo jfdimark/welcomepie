@@ -16,4 +16,6 @@
 	    flash[:notice] = "Removed friendship."
 	    redirect_to current_user
 	  end
-	end
+
+
+end

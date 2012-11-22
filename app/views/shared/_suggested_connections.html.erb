@@ -4,7 +4,7 @@
 		  <% @user.friendships.each do |friendship| %>
 		  <li>
 		    	<%= friendship.friend.name %> 
-		    (<%= link_to "remove", friendship, :method => :delete %>)<br />
+		    (<%= link_to "remove", friendship, :method => :delete, :class => "btn-small btn-danger" %>)<br />
  		    	<%= image_tag friendship.friend.avatar(:thumb) %>
 		  </li>
 		  <% end %> 

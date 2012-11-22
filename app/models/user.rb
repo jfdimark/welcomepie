@@ -1,7 +1,7 @@
   class User < ActiveRecord::Base
 
-    has_many :friendships
-    has_many :friends, :through => :friendships
+    has_many :friendships, dependent: :destroy
+    has_many :friends, through: :friendships
 
     rolify
     # Include default devise modules. Others available are:
@@ -11,13 +11,17 @@
            :recoverable, :rememberable, :trackable, :validatable
 
     # Setup accessible (or protected) attributes for your model
-    attr_accessible :role_ids, :as => :admin
+    attr_accessible :role_ids, as: :admin
     attr_accessible :name, :email, :password, :password_confirmation, :remember_me
     attr_accessible :occupation_list, :gender_list, :moving_from_list, :moving_to_list, :family_type_list, :age_bracket_list, :interest_list, :about_me, :username, :avatar
     has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
     acts_as_taggable
     acts_as_taggable_on :occupation, :gender, :moving_from, :moving_to, :family_type, :age_bracket, :interests
     scope :by_join_date, order("created_at DESC")
+
+  def friends?(friend)
+    friendships.find_by_friend_id(friend.id)
+  end
 
   private
 
