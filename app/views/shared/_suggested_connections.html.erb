@@ -8,6 +8,14 @@
  		    	<%= image_tag friendship.friend.avatar(:thumb) %>
 		  </li>
 		  <% end %> 
+		  	<% @user.inverse_friends.each do |inverse_friendship| %>
+		  <li>
+		  	<%= inverse_friendship.name %>
+		  	<%= link_to "remove", inverse_friendship_path(@user.friendships), :method => :delete, :class => "btn-small btn-danger" %><br />
+ 		    <%= image_tag inverse_friendship.avatar(:thumb) %>
+
+		  </li>
+		  <% end %>
 		</ul>
 		</div>
 	</div>

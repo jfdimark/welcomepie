@@ -7,6 +7,8 @@
 <h3>Please sign up <%= link_to 'here', new_user_registration_path %></h3>
 <% end %> 
 
+<% if current_user %>
+
 	<% @users.each do |user| %>
 
 		<p>User: <%=link_to user.name, user %>
@@ -20,5 +22,13 @@
 
 	<% end %>
 
-	
+<% else %>
 
+	<% @users.each do |user| %>
+
+		<p>User: <%=link_to user.name, user %>
+
+				<%= link_to "Sign up to make friends!", new_user_registration_path, :class => "btn-small btn-success" %> </p>
+	<% end %>
+
+<% end %>

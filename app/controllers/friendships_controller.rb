@@ -3,19 +3,32 @@
 	    @friendship = current_user.friendships.build(friend_id: params[:friend_id])
 	    if @friendship.save
 	      flash[:notice] = "Added friend."
-	      redirect_to root_url
+	      redirect_to current_user
 	    else
 	      flash[:error] = "Unable to add friend."
 	      redirect_to root_url
 	    end
 	  end
+
+
+    # def show
+    #   @user = User.find(params[:id])
+    # end
 	  
 	  def destroy
-	    @friendship = current_user.friendships.find(params[:id])
+	    @friendship = collection.find(params[:id])
 	    @friendship.destroy
 	    flash[:notice] = "Removed friendship."
 	    redirect_to current_user
 	  end
 
+protected
+
+	def collection
+	  case request.path
+	  when /\/inverse_friendships/ then current_user.inverse_friendships
+	  else current_user.friendships
+	  end
+	end
 
 end

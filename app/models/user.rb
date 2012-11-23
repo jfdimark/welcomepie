@@ -2,6 +2,8 @@
 
     has_many :friendships, dependent: :destroy
     has_many :friends, through: :friendships
+    has_many :inverse_friendships, dependent: :destroy, class_name: "Friendship", foreign_key: "friend_id"
+    has_many :inverse_friends, through: :inverse_friendships, source: :user
 
     rolify
     # Include default devise modules. Others available are:
