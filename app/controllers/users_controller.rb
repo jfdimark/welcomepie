@@ -9,6 +9,7 @@
     end
 
     def show
+      # authorize! :update, @user
       @user = User.find(params[:id])
     end
 

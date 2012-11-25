@@ -1,6 +1,7 @@
 	<div class="span5">
 		<div class="MemberDisplay">
 			<ul>
+
 		  <% @user.friendships.each do |friendship| %>
 		  <li>
 		    	<%= friendship.friend.name %> 
@@ -11,12 +12,13 @@
 		  	<% @user.inverse_friends.each do |inverse_friendship| %>
 		  <li>
 		  	<%= inverse_friendship.name %>
-		  	<%= link_to "remove", inverse_friendship_path(@user.friendships), :method => :delete, :class => "btn-small btn-danger" %><br />
+		  	<%= link_to "remove", @user.inverse_friendships, :method => :delete, :class => "btn-small btn-danger" %><br />
  		    <%= image_tag inverse_friendship.avatar(:thumb) %>
 
 		  </li>
 		  <% end %>
 		</ul>
+ 
 		</div>
 	</div>
 

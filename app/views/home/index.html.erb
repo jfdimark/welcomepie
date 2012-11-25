@@ -15,10 +15,10 @@
 
 			<% if current_user.friends?(user) %>
 
-				<%= link_to "Remove", current_user.friendships, :method => :delete, :class => "btn-small btn-danger" %>
-			<% else %>
-				<%= link_to "Add as friend", friendships_path(:friend_id => user.id), :method => :post, :class => "btn-small btn-success" %> </p>
-			<% end %>
+					<%= link_to "Remove", current_user.friendships, :method => :delete, :class => "btn-small btn-danger" %>
+				<% else %>
+					<%= link_to "Add as friend", friendships_path(:friend_id => user.id), :method => :post, :class => "btn-small btn-success" %> </p>
+				<% end %>
 
 	<% end %>
 

@@ -1,7 +1,9 @@
 	Welcomepie::Application.routes.draw do
 
+
+
 		resources :friendships
-		resources :inverse_friendships, controller: :friendships, as: :show
+		resources :inverse_friendships
 
 	  authenticated :user do
 	    root :to => 'home#index'
