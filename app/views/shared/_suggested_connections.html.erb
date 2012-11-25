@@ -2,6 +2,8 @@
 		<div class="MemberDisplay">
 			<ul>
 
+<% if @user.id %>
+
 		  <% @user.friendships.each do |friendship| %>
 		  <li>
 		    	<%= friendship.friend.name %> 
@@ -18,7 +20,22 @@
 		  </li>
 		  <% end %>
 		</ul>
- 
+
+		<% else %>
+
+			<% @user.friendships.each do |friendship| %>
+		  <li>
+		    	<%= friendship.friend.name %> 
+		     	<%= image_tag friendship.friend.avatar(:thumb) %>
+		  </li>
+		  <% end %> 
+		  	<% @user.inverse_friends.each do |inverse_friendship| %>
+		  <li>
+		  	<%= inverse_friendship.name %>
+ 		    <%= image_tag inverse_friendship.avatar(:thumb) %>
+ 		   <% end %>
+ 		   
+ 		  <% end %> 
 		</div>
 	</div>
 

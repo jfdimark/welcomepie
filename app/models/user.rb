@@ -4,6 +4,7 @@
     has_many :friends, through: :friendships
     has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
     has_many :inverse_friends, through: :inverse_friendships, source: :user
+    has_many :pending_friends, through: :friendships, source: :friend, conditions: "confirmed = 0"
 
     rolify
     # Include default devise modules. Others available are:
@@ -23,6 +24,30 @@
 
   def friends?(friend)
     friendships.find_by_friend_id(friend.id)
+  end
+
+  def self.request(user, friend)
+    unless user == friend or Friendship.exists?(user, friend)
+      transaction do
+        create(:user => user, :friend => friend, :status => 'pending')
+        create(:user => friend, :friend => user, :status => 'requested')
+      end
+    end
+  end
+
+  def self.accept(user, friend)
+    transaction do
+      accepted_at = Time.now
+      accept_one_side(user, friend, accepted_at)
+      accept_one_side(friend, user, accepted_at)
+    end
+  end
+
+  def self.accept_one_side(user, friend, accepted_at)
+    request = find_by_user_id_and_friend_id(user, friend)
+    request.status = 'accepted'
+    request.accepted_at = accepted_at
+    request.save!
   end
 
   private

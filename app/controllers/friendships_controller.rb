@@ -1,4 +1,5 @@
 	class FriendshipsController < ApplicationController
+
 	  def create
 	    @friendship = current_user.friendships.build(friend_id: params[:friend_id])
 	    if @friendship.save
@@ -10,11 +11,6 @@
 	    end
 	  end
 
-
-    # def show
-    #   @user = User.find(params[:id])
-    # end
-	  
 	  def destroy
 	    @friendship = collection.find(params[:id])
 	    @friendship.destroy
