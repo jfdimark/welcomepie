@@ -1,8 +1,13 @@
 	Welcomepie::Application.routes.draw do
 
-		resources :friendships
-		#resources :inverse_friendships
+	resources :friends, :controller => 'friendships', :except => [:show, :edit] do
+ 	 	get "requests", :on => :collection
+  	get "invites", :on => :collection
+  	#match '/new', to: 'users#show'
+  end
 
+  #resources :friendships
+		
 	  authenticated :user do
 	    root :to => 'home#index'
 	  end

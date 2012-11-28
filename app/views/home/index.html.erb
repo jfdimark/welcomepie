@@ -1,34 +1,48 @@
 
 <% if user_signed_in? %>
 
-<h3>Welcome back <%= current_user.name %>!</h3>
+<h3>Hello <%= current_user.name %>!</h3>
 
-<% else %>
-<h3>Please sign up <%= link_to 'here', new_user_registration_path %></h3>
-<% end %> 
+	<% if current_user %>
 
-<% if current_user %>
+		<% @users.each do |user| %>
 
-	<% @users.each do |user| %>
+			<p>User: <%=link_to user.name, user %>
 
-		<p>User: <%=link_to user.name, user %>
+				<% if current_user.friend_with? user = user %>
 
-			<% if current_user.friends?(user) %>
+				<%= link_to "Remove", friend_path(user), :method => :delete, :class => "btn-small btn-danger" %>
+					
+				<% elsif current_user.invited? user = user %>
+					
+				<%= link_to "Cancel request", friend_path(user), :method => :delete, :class => "btn-small btn-warning" %>
 
-					<%= link_to "Remove", current_user.friendships, :method => :delete, :class => "btn-small btn-danger" %>
+				<% elsif user.invited? current_user %>
+
+				<%= link_to "Confirm friend", friend_path(user), :method => :put, :class => "btn-small btn-primary" %> 
+
 				<% else %>
-					<%= link_to "Add as friend", friendships_path(:friend_id => user.id), :method => :post, :class => "btn-small btn-success" %> </p>
+					<%= link_to "Add as friend", friends_path(:user_id => user), :method => :post, :class => "btn-small btn-success" %>
+
+
 				<% end %>
 
+			<% end %></p>
+
+	<% else %>
+
+		<% @users.each do |user| %>
+
+			<p>User: <%=link_to user.name, user %>
+
+			<%= link_to "Sign up to make friends!", new_user_registration_path, :class => "btn-small btn-success" %> </p>
+		<% end %>
+
 	<% end %>
 
 <% else %>
 
-	<% @users.each do |user| %>
+<h3>Please sign up <%= link_to 'here', new_user_registration_path %></h3>
 
-		<p>User: <%=link_to user.name, user %>
+<% end %> 
 
-				<%= link_to "Sign up to make friends!", new_user_registration_path, :class => "btn-small btn-success" %> </p>
-	<% end %>
-
-<% end %>
