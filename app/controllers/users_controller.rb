@@ -13,6 +13,10 @@
     def show
       # authorize! :update, @user
       @user = User.find(params[:id])
+      @users = User.all
+      @friends = current_user.friends
+      @pending_invited_by = current_user.pending_invited_by
+      @pending_invited = current_user.pending_invited
     end
 
     def new

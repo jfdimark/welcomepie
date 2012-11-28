@@ -1,41 +1,35 @@
 	<div class="span5">
 		<div class="MemberDisplay">
-			<ul>
 
-<% if @user.id %>
 
-		  <% @user.friendships.each do |friendship| %>
-		  <li>
-		    	<%= friendship.friend.name %> 
-		    (<%= link_to "remove", friendship, :method => :delete, :class => "btn-small btn-danger" %>)<br />
- 		    	<%= image_tag friendship.friend.avatar(:thumb) %>
-		  </li>
-		  <% end %> 
-		  	<% @user.inverse_friends.each do |inverse_friendship| %>
-		  <li>
-		  	<%= inverse_friendship.name %>
-		  	<%= link_to "remove", @user.inverse_friendships, :method => :delete, :class => "btn-small btn-danger" %><br />
- 		    <%= image_tag inverse_friendship.avatar(:thumb) %>
+			<% if current_user %>
 
-		  </li>
-		  <% end %>
-		</ul>
+				<% @users.each do |user| %>
 
-		<% else %>
+					<p>User: <%=link_to user.name, user %>
 
-			<% @user.friendships.each do |friendship| %>
-		  <li>
-		    	<%= friendship.friend.name %> 
-		     	<%= image_tag friendship.friend.avatar(:thumb) %>
-		  </li>
-		  <% end %> 
-		  	<% @user.inverse_friends.each do |inverse_friendship| %>
-		  <li>
-		  	<%= inverse_friendship.name %>
- 		    <%= image_tag inverse_friendship.avatar(:thumb) %>
- 		   <% end %>
- 		   
- 		  <% end %> 
+						<% if current_user.friend_with? user = user %>
+
+						<%= link_to "Remove", friend_path(user), :method => :delete, :class => "btn-small btn-danger" %>
+							
+						<% elsif current_user.invited? user = user %>
+							
+						<%= link_to "Cancel request", friend_path(user), :method => :delete, :class => "btn-small btn-warning" %>
+
+						<% elsif user.invited? current_user %>
+
+						<%= link_to "Confirm friend", friend_path(user), :method => :put, :class => "btn-small btn-primary" %> 
+
+						<% else %>
+							<%= link_to "Add as friend", friends_path(:user_id => user), :method => :post, :class => "btn-small btn-success" %>
+
+
+						<% end %>
+
+					<% end %></p>
+
+				<% end %>
+
 		</div>
 	</div>
 
