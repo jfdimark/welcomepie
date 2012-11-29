@@ -2,7 +2,7 @@
 	<div class="span5 offset1">
 		<div class="UserProfile">
 
-			<h3>Your profile</h3>
+			<h3>My profile</h3>
 			<p>User: <b><%= @user.name %></p></b>
 			<p>Email: <b><%= @user.email if @user.email %></p></b>
 			<p>Occupation: <b><%= @user.occupation_list %></p></b>
@@ -17,12 +17,23 @@
 			<p>Username: <b><%= @user.username %></p></b>
 			<% else %>
 			<% end %>
-			<p>Photo:<br /> <%= image_tag @user.avatar.url(:medium) %></p>
-
+			<p>Photo:<br /> <%= image_tag @user.avatar.url(:thumb) %></p>
+			<br />
+			<% if current_user == @user %>
+			<%= link_to 'Edit profile', edit_user_registration_path %>
+			<% end %>
 		</div>
 	</div>
 
+	<% if current_user == @user %>
 
 	<%= render partial: 'shared/suggested_connections' %>
+
+	<% else %>
+
+	TEST
+
+	<% end %>
+
 
 </div>

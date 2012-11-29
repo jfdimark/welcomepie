@@ -1,23 +1,26 @@
 	<div class="span5">
 		<div class="MemberDisplay">
 
-
-			<% if current_user %>
+			<h3> My Friends </h3>
 
 				<% @friends.each do |friend| %>
 
-					<p>Friends: <%=link_to friend.name, friend %>
+						<p>Friends: <%=link_to friend.name, friend %>
 
 						<% if current_user.friend_with? friend %>
 
 						<%= link_to "Remove", friend_path(friend), :method => :delete, :class => "btn-small btn-danger" %>
 
 						<% end %></p>
-					<% end %>
+				<% end %>
 
+			<h3> Friend requests </h3>
+			
 				<% @users.each do |user| %>
 
-				<% if user.invited? current_user %>
+				<% if user.friends %>
+
+				<% else user.invited? current_user %>
 					
 					<p>Requests: <%=link_to user.name, user %>
 											
@@ -25,9 +28,7 @@
 
 						<% end %>
 
-					<% end %></p>
-
-				<% end %>
+				<% end %></p>
 
 		</div>
 	</div>

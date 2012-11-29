@@ -1,0 +1,36 @@
+<% if current_user %>
+
+		<% @users.each do |user| %>
+
+			<p>User: <%=link_to user.name, user %>
+
+				<% if current_user.friend_with? user = user %>
+
+				<%= link_to "Remove", friend_path(user), :method => :delete, :class => "btn-small btn-danger" %>
+					
+				<% elsif current_user.invited? user = user %>
+					
+				<%= link_to "Cancel request", friend_path(user), :method => :delete, :class => "btn-small btn-warning" %>
+
+				<% elsif user.invited? current_user %>
+
+				<%= link_to "Confirm friend", friend_path(user), :method => :put, :class => "btn-small btn-primary" %> 
+
+				<% else %>
+					<%= link_to "Add as friend", friends_path(:user_id => user), :method => :post, :class => "btn-small btn-success" %>
+
+
+				<% end %>
+
+			<% end %></p>
+
+				<% else %>
+
+		<% @users.each do |user| %>
+
+			<p>User: <%=link_to user.name, user %>
+
+			<%= link_to "Sign up to make friends!", new_user_registration_path, :class => "btn-small btn-success" %> </p>
+		<% end %>
+
+	<% end %>
