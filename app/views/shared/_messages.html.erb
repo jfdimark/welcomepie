@@ -1,0 +1,11 @@
+
+<% if current_user %>
+
+		<% @messages.each do |msg| %>
+
+		<p>From: <%= msg.from.name %></p>
+		<p>Subject: <%= msg.topic %></p>
+		<p>Message:<%= msg.body %></p>
+
+	<% end %>
+<% end %>

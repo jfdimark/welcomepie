@@ -3,6 +3,8 @@
 	resources :friends, :controller => 'friendships', :except => [:show, :edit] do
  	 	get "requests", :on => :collection
   	get "invites", :on => :collection
+  	get "new_message", :on => :collection
+    post "create_message", :on => :collection
   	#match '/new', to: 'users#show'
   end
 

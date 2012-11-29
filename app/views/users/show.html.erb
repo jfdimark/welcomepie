@@ -17,12 +17,18 @@
 			<p>Username: <b><%= @user.username %></p></b>
 			<% else %>
 			<% end %>
-			<p>Photo:<br /> <%= image_tag @user.avatar.url(:medium) %></p>
+			<p>Photo:<br /> <%= image_tag @user.avatar.url(:thumb) %></p>
 
 		</div>
 	</div>
 
+	<div class="span5">
+		<div class="MemberDisplay">
 
-	<%= render partial: 'shared/suggested_connections' %>
+			<%= render partial: 'shared/connections' %>
+			<br /><br />
+			<%= render partial: 'shared/messages' %>
 
+		</div>
+	</div>
 </div>
