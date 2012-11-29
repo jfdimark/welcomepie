@@ -18,6 +18,7 @@
 			<% else %>
 			<% end %>
 			<p>Photo:<br /> <%= image_tag @user.avatar.url(:thumb) %></p>
+
 			<br />
 			<% if current_user == @user %>
 			<%= link_to 'Edit profile', edit_user_registration_path %>
@@ -27,13 +28,21 @@
 
 	<% if current_user == @user %>
 
-	<%= render partial: 'shared/suggested_connections' %>
+	<div class="span5">
+		<div class="MemberDisplay">
+
+			<%= render partial: 'shared/connections' %>
+			<br /><br />
+			<%= render partial: 'shared/messages' %>
 
 	<% else %>
 
-	TEST
 
 	<% end %>
 
 
+
+		</div>
+	</div>
 </div>
+

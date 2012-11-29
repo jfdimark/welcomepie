@@ -7,6 +7,7 @@
       @friends = current_user.friends
       @pending_invited_by = current_user.pending_invited_by
       @pending_invited = current_user.pending_invited
+      @messages  = current_user.received_messages
     end
 
 
@@ -17,6 +18,12 @@
       @friends = current_user.friends
       @pending_invited_by = current_user.pending_invited_by
       @pending_invited = current_user.pending_invited
+      @messages  = current_user.received_messages
+      
+    end
+
+    def show_message
+     @messages  = current_user.received_messages
     end
 
     def new
@@ -62,7 +69,20 @@
       respond_to do |format|
         format.html
         format.json { render json: @tags }
-      end
+      end 
     end
 
+
   end
+
+
+
+
+
+
+
+
+
+
+
+

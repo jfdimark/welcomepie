@@ -19,9 +19,8 @@
     acts_as_taggable_on :occupation, :gender, :moving_from, :moving_to, :family_type, :age_bracket, :interests
     scope :by_join_date, order("created_at DESC")
 
-  # def friends?(friend)
-  #   friendships.find_by_friend_id(friend.id)
-  # end
+    acts_as_messageable
+
 
     def self.friends
       friendship_model = Amistad::Friendships.const_get(:"#{Amistad.friendship_model}")
