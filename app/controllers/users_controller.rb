@@ -19,7 +19,6 @@
       @pending_invited_by = current_user.pending_invited_by
       @pending_invited = current_user.pending_invited
       @messages  = current_user.received_messages
-      
     end
 
     def show_message

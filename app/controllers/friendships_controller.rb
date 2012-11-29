@@ -52,7 +52,6 @@
   end
 
 
-
   def destroy_message
      @message  = current_user.messages.find(params[:id])
     if  @message .destroy
@@ -67,8 +66,8 @@
   end
 
   def create_message
-    @to = User.find_by_id(params[:user_id])
-    current_user.send_message(@to , params[:acts_as_messageable_message][:topic], params[:acts_as_messageable_message][:body])
+    @to = User.find_by_id(params[:friend_id])
+    current_user.send_message(@to, params[:acts_as_messageable_message][:topic], params[:acts_as_messageable_message][:body], params[:acts_as_messageable_message][:received_messageable_id])
     redirect_to :back, notice: "Message sent"
   end
   
