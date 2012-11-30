@@ -2,7 +2,11 @@
 	<div class="span5 offset1">
 		<div class="UserProfile">
 
-			<h3>My profile</h3>
+			<% if current_user == @user %>
+			<h3> My profile </h3>
+			<% else %>
+			<h3><%= @user.name %>'s profile</h3>
+			<% end %>
 			<p>User: <b><%= @user.name %></p></b>
 			<p>Email: <b><%= @user.email if @user.email %></p></b>
 			<p>Occupation: <b><%= @user.occupation_list %></p></b>
@@ -22,6 +26,10 @@
 			<br />
 			<% if current_user == @user %>
 			<%= link_to 'Edit profile', edit_user_registration_path %>
+			<% else %>
+				<% unless current_user.friend_with? user = user %>
+				<%= link_to "Add as friend", friends_path(:user_id => user), :method => :post, :class => "btn btn-success" %>
+				<% end %>
 			<% end %>
 		</div>
 	</div>

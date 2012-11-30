@@ -1,4 +1,4 @@
-<%= simple_form_for ActsAsMessageable::Message.new, url: url, :method => :post do |f| %>
+<%= simple_form_for ActsAsMessageable::Message.new, url: reply_message_path(@message), method: :post do |f| %>
   <%= f.input :topic %>
   <%= f.input :body %>
   <%= f.button :submit, label: "Send", class: 'btn' %>

@@ -1,0 +1,6 @@
+<%= simple_form_for ActsAsMessageable::Message.new, url: friend_messages_path(params[:friend_id]), method: :post do |f| %>
+  <%= f.input :topic %>
+  <%= f.input :body %>
+  <%= f.button :submit, label: "Send", class: 'btn' %>
+<% end %>
+

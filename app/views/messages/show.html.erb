@@ -1,5 +1,23 @@
-<h1><%= @message.topic %></h1>
+<div class="row-fluid">
+	<div class="span5 offset1">
+		<div class="UserProfile">
 
-<%= simple_format @message.body %>
+			<h3> Reply </h3>
+			<%= render partial: "form_reply" %>
+			
 
-<%= render partial: "form", locals: { url: reply_message_path(@message) } %>
+		</div>
+	</div>
+
+	<div class="span5">
+		<div class="MemberDisplay">
+
+			<h3>Message from <%= @message.from.name %>
+
+			<p><strong><%= @message.topic %></strong></h2>
+
+			<%= simple_format @message.body %>
+
+		</div>
+	</div>
+</div>
