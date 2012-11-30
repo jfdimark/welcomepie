@@ -33,6 +33,7 @@ class MessagesController < ApplicationController
   
   def outbox
      @messages = current_user.sent_messages
+     render "index"
   end
 
   def destroy

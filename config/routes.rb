@@ -8,6 +8,9 @@ Welcomepie::Application.routes.draw do
   end
 
   resources :messages, only: [:index, :show, :destroy] do 
+    collection do
+      get "outbox"
+    end
     member do
       post 'reply'
     end
