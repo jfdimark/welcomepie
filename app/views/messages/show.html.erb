@@ -1,0 +1,5 @@
+<h1><%= @message.topic %></h1>
+
+<%= simple_format @message.body %>
+
+<%= render partial: "form", locals: { url: reply_message_path(@message) } %>

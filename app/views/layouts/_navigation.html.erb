@@ -13,6 +13,9 @@
     <li>
     <%= link_to 'My Profile', current_user %>
     </li>
+    <li>
+    <%= link_to "Messages (#{get_unread_number})", messages_path %>
+    </li>
     <% if current_user.has_role? :admin %>
       <li>
       <%= link_to 'Admin', users_path %>

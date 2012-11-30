@@ -1,6 +1,9 @@
 class DropFriendshipsTable < ActiveRecord::Migration
   def up
-  	drop_table :friendships
+    begin
+    	drop_table :friendships
+    rescue
+    end
   end
 
   def down

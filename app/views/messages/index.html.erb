@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>From</th>
+      <th>Topic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><% unless message.opened? %>Unread<% end %></td>
+        <td><%= message.from.name %></td> 
+        <td><%= link_to message.topic, message_path(message) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
