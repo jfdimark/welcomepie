@@ -1,13 +1,27 @@
 
-<% if user_signed_in? %>
+<div class="row-fluid">
+	<div class="span5 offset1">
+		<div class="UserProfile">
 
-<h3>Hello <%= current_user.name %>!</h3>
+			<% if user_signed_in? %>
 
-	<%= render partial: 'index_profiles' %>
+			<h3>Hello <%= current_user.name %>!</h3>
 
-<% else %>
+		</div>
+	</div>
+	
+	<div class="span5">
+		<div class="MemberDisplay">
 
-<h3>Please sign up <%= link_to 'here', new_user_registration_path %></h3>
+				<%= render partial: 'index_profiles' %>
 
-<% end %> 
+			<% else %>
 
+			<h3>Please sign up <%= link_to 'here', new_user_registration_path %></h3>
+
+			<% end %> 
+
+
+		</div>
+	</div>
+</div>

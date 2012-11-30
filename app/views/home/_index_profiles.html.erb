@@ -1,8 +1,12 @@
+<h3> See who you can connect with today! </h3>
 <% if current_user %>
 
 		<% @users.each do |user| %>
 
-			<p>User: <%=link_to user.name, user %>
+			<% unless current_user == user %>
+			<p><%= image_tag user.avatar.url(:thumb) %> 
+				<br /><%=link_to user.name, user %>
+			<% end %>
 
 				<% if current_user.friend_with? user = user %>
 
@@ -16,8 +20,12 @@
 
 				<%= link_to "Confirm friend", friend_path(user), :method => :put, :class => "btn-small btn-primary" %> 
 
+				<% elsif current_user == user %>
+
+
 				<% else %>
-					<%= link_to "Add as friend", friends_path(:user_id => user), :method => :post, :class => "btn-small btn-success" %>
+
+				<%= link_to "Add as friend", friends_path(:user_id => user), :method => :post, :class => "btn-small btn-success" %>
 
 
 				<% end %>

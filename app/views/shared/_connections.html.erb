@@ -1,3 +1,4 @@
+<h3> Your friends </h3>
 
 			<% if current_user %>
 
@@ -16,6 +17,8 @@
 						<% end %>
 
 				<% unless @user.friends %>
+
+<h3> Friend requests </h3>
 
 					<% @users.each do |user| %>
 
