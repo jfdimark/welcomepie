@@ -1,17 +1,15 @@
 
 <div class="row-fluid">
-	<div class="span5 offset1">
-		<div class="UserProfile">
+	<div id="column-group">
+		<div class="span5 offset1 UserProfile">
 
 			<% if user_signed_in? %>
 
 			<h3>Hello <%= current_user.name %>!</h3>
 
 		</div>
-	</div>
 	
-	<div class="span5">
-		<div class="MemberDisplay">
+	<div class="span5 MemberDisplay">
 
 				<%= render partial: 'index_profiles' %>
 

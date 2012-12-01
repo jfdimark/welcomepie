@@ -9,7 +9,7 @@
 
 						<% if current_user.friend_with? friend %>
 
-						<%= link_to "Remove", friend_path(friend), :method => :delete, :class => "btn-small btn-danger" %>
+						<%= link_to "Remove", friend_path(friend), :method => :delete, :class => "btn-mini btn-danger" %>
 
 						<% end %></p>
 				<% end %>
@@ -24,7 +24,7 @@
 					
 					<p>Requests: <%=link_to user.name, user %>
 											
-						<%= link_to "Confirm friend", friend_path(user), :method => :put, :class => "btn-small btn-primary" %> 
+						<%= link_to "Confirm friend", friend_path(user), :method => :put, :class => "btn-mini btn-primary" %> 
 
 						<% end %>
 

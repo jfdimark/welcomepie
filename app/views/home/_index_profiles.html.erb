@@ -5,15 +5,20 @@
 
 			<% unless current_user == user %>
 				<% unless current_user.friend_with? user = user %>
-
+				<% if user.avatar.present? %>
 					<p><%= image_tag user.avatar.url(:thumb) %> 
-						<br /><%=link_to user.name, user %>
+				<% else %>
+				  <p><%= image_tag 'BlankProfile.jpg', width: '80px' %>
+				<% end %>
+
+					<br /><%=link_to user.name, user %>
+
 			
 				<% end %>
 
 				<% unless current_user.friend_with? user = user %>
 
-				<%= link_to "Add as friend", friends_path(:user_id => user), :method => :post, :class => "btn-small btn-success" %>
+				<%= link_to "Add as friend", friends_path(:user_id => user), :method => :post, :class => "btn-mini btn-success" %>
 
 				<% end %>
 			<% end %>
@@ -25,7 +30,7 @@
 
 			<p>User: <%=link_to user.name, user %>
 
-			<%= link_to "Sign up to make friends!", new_user_registration_path, :class => "btn-small btn-success" %> </p>
+			<%= link_to "Sign up to make friends!", new_user_registration_path, :class => "btn-mini btn-success" %> </p>
 		<% end %>
 
 	<% end %>

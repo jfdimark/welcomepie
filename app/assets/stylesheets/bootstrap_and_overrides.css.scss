@@ -6,12 +6,19 @@ $green: #3CC221;
 $palegreen: #60E06F;
 
 
-
+body {
+	background-color: aaa;
+	.content{
+	background-image:url('cityscape.jpg');
+	background-repeat:repeat -x;
+	}
+}
 
 	.UserProfile {
 	  padding: 20px;
 	  margin-bottom: 30px;
-	  background-color: $green;
+	  color: white;
+	  background-color: #4A777A;
 	  background-size: 100%;
 	  opacity: .95;
 	    -webkit-border-radius: 6px;
@@ -23,7 +30,7 @@ $palegreen: #60E06F;
 	.MemberDisplay {
 	  padding: 20px;
 	  margin-bottom: 30px;
-	  background-color: $palegreen;
+	  background-color: white;
 	  background-size: 100%;
 	  opacity: .95;
 	    -webkit-border-radius: 6px;
