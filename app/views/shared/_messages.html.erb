@@ -1,11 +1,12 @@
+	<% if current_user %>
 
-<% if current_user %>
+			<% @messages.each do |msg| %>
+			<div class="messages">
 
-		<% @messages.each do |msg| %>
-
-		<p>From: <%= msg.from.name %></p>
-		<p>Subject: <%= msg.topic %></p>
-		<p>Message:<%= msg.body %></p>
+			<p>From: <%= msg.from.name %></p>
+			<p>Subject: <%= msg.topic %></p>
+			<p>Message:<%= msg.body %></p>
+			</div>
+		<% end %>
 
 	<% end %>
-<% end %>
