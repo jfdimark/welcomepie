@@ -15,6 +15,15 @@
  *                 Add the function to a selector: $("#parent-id").equalize_column_heights("equalize");
  *                 Add class="equalize" to each div that needs the same height
  */
+
+if(jQuery().pluginMethod) {
+    //jQuery plugin exists
+} else {
+    //jQuery plugin DOES NOT exist
+}
+
+(function ($) {
+
 $.fn.equalize_column_heights = function (equalize_class) {
 
 	  var tallest_column=0;
@@ -30,3 +39,5 @@ $.fn.equalize_column_heights = function (equalize_class) {
 		});
 
 }
+
+}(jQuery));

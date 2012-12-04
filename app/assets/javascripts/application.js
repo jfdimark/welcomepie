@@ -13,5 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require equalize_column_heights.js
 //= require_tree .
 
+
+$(document).ready(function() {
+	$("#column-group").equalize_column_heights("equalize");
+});
