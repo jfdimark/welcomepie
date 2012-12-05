@@ -18,5 +18,5 @@
 
 
 $(document).ready(function() {
-	$("#column-group").equalize_column_heights("equalize");
+	$(".equalize").equalHeights();
 });
